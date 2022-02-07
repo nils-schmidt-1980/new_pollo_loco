@@ -22,10 +22,7 @@ animate() {
     this.moveLeft();
 
     setInterval(() => {
-    let i = this.currentImage % this.IMAGES_WALKING.length; // Modulu
-    this.path = this.IMAGES_WALKING[i];//Hole Pfad aus dem Array
-    this.img = this.ImageCache[this.path];//Schreibt den Pfad in die Image Variable
-    this.currentImage++; // Erhöhe currentImage
+        this.playAnimation(this.IMAGES_WALKING)
     }, 100);
 }
 

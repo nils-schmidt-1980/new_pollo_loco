@@ -8,7 +8,10 @@ class MovableObject {
     currentImage = 0;
     speed = 0.15;
     otherDirection = false;
+    speedY = 0;
+    acceleration = 2;
 
+    sounds;
     loadImage(path) {
         this.img = new Image();
         this.img.src = path;
@@ -24,8 +27,30 @@ class MovableObject {
        
     }
 
+    playAnimation(images) {
+                let i = this.currentImage % this.IMAGES_WALKING.length; // Modulu
+                this.path = images[i];//Hole Pfad aus dem Array
+                this.img = this.ImageCache[this.path];//Schreibt den Pfad in die Image Variable
+                this.currentImage++; // Erhöhe currentImage
+    }
+
     moveRight() {
         console.log('Laufe rechts');
+    }
+
+    //Springen oder Fallen Berrechnung
+    applyGravity() {
+        setInterval(() => {
+            if(this.isAboveGround()|| this.speedY > 0) { // Check wie weit Pepe fallen soll
+                this.y -= this.speedY;
+                this.speedY -=this.acceleration;
+            }
+           
+        }, 1000 / 25);
+    }
+
+    isAboveGround() { // Check ob Pepe am Boden ist.
+        return this.y < 180
     }
 
    //Links Bewugenung
