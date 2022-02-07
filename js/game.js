@@ -7,9 +7,9 @@ function init () {
     keyboard = new Keyboard(); 
 
     canvas = document.getElementById('canvas');// Holt Canvas-Tag von der index.html
-    worlds = new world(canvas,keyboard);//Übergabe des Canvas an new World
+    world = new World(canvas,keyboard);//Übergabe des Canvas an new World
 
-    console.log('Dein Objekt lautet:',worlds.character);
+    console.log('Dein Objekt lautet:',world.character);
 }
 
 document.addEventListener('keydown' ,(event) => {
