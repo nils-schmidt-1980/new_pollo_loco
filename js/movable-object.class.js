@@ -35,7 +35,9 @@ class MovableObject {
     }
 
     moveRight() {
-        console.log('Laufe rechts');
+        //Running animation
+        this.x += this.speed;
+        this.otherDirection = false;
     }
 
     //Springen oder Fallen Berrechnung
@@ -54,9 +56,10 @@ class MovableObject {
     }
 
    //Links Bewugenung
-   moveLeft() {
-    setInterval(() => {
-        this.x -= this.speed
-    }, 1000 / 60);
+   moveLeft(reflect) {
+    this.x -= this.speed;
+    this.otherDirection = true;
+    
+    
 }
 }

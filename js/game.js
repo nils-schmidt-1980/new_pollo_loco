@@ -2,14 +2,23 @@
 let canvas;
 let worlds;
 let keyboard;
+//let sound = new Audio('audio/game_sound.mp3');
+
 
 function init () {
     keyboard = new Keyboard(); 
 
     canvas = document.getElementById('canvas');// Holt Canvas-Tag von der index.html
     world = new World(canvas,keyboard);//Übergabe des Canvas an new World
+    soundLoop();
 
     console.log('Dein Objekt lautet:',world.character);
+}
+
+function soundLoop() {
+    setInterval(() => {
+       // sound.play();
+    }, 1);
 }
 
 document.addEventListener('keydown' ,(event) => {

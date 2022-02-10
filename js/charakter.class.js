@@ -39,24 +39,17 @@ y = -200;
         setInterval(() => {
             this.walkingAudio.pause();
             if (this.world.keyboard.right && this.x < this.world.level.levelEndX) { 
-                 //Running animation
-                 this.x += this.speed;
-                 this.otherDirection = false;
+                 this.moveRight();
                  this.walkingAudio.play();
             }
 
             if (this.world.keyboard.left && this.x > 0) { 
-                //Running animation
-                this.x -= this.speed;
-                this.otherDirection = true;
+                this.moveLeft(this.reflect);
                 this.walkingAudio.play();
            }
 
-           if (this.world.keyboard.up) {
-               this.speedY = 20;
-           }
-
-           this.world.camera_x = -this.x +100;
+           // Jumping animation
+           this.jump();
         }, 1000 / 60);
 
         setInterval(() => {
@@ -69,13 +62,14 @@ y = -200;
                     this.playAnimation(this.IMAGES_WALKING);
                 }
             }
-
-           
-        
-        }, 50);
+     }, 50);
     }
     
  jump() {
-    console.log('Springen')
+    if (this.world.keyboard.space && !this.isAboveGround()) {
+        this.speedY = 30;
+    }
+
+    this.world.camera_x = -this.x +100;
  }
 }
