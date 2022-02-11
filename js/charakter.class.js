@@ -6,7 +6,7 @@ IMAGES_WALKING = [
     'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-23.png',
     'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-24.png',
     'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-25.png',
-    'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-26.png',
+    'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-26.png'
 ];
 
 IMAGES_JUMPING = [
@@ -19,9 +19,18 @@ IMAGES_JUMPING = [
     'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-37.png',
     'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-38.png',
     'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-39.png',
-    'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-40.png',
+    'img/2.Secuencias_Personaje-Pepe-correcciขn/3.Secuencia_salto/J-40.png'
 
-]
+];
+
+IMAGES_DEAD = [
+   'img/2.Secuencias_Personaje-Pepe-correcciขn/5.Muerte/D-51.png',
+   'img/2.Secuencias_Personaje-Pepe-correcciขn/5.Muerte/D-52.png',
+   'img/2.Secuencias_Personaje-Pepe-correcciขn/5.Muerte/D-53.png',
+   'img/2.Secuencias_Personaje-Pepe-correcciขn/5.Muerte/D-54.png',
+   'img/2.Secuencias_Personaje-Pepe-correcciขn/5.Muerte/D-55.png',
+   'img/2.Secuencias_Personaje-Pepe-correcciขn/5.Muerte/D-56.png'
+];
 
 world;
 speed = 10;
@@ -31,6 +40,7 @@ y = -200;
         super().loadImage('img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-21.png');
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
+        this.loadImage(this.IMAGES_DEAD);
         this.applyGravity();
         this.animate();
     }
@@ -44,7 +54,7 @@ y = -200;
             }
 
             if (this.world.keyboard.left && this.x > 0) { 
-                this.moveLeft(this.reflect);
+                this.moveLeft();
                 this.walkingAudio.play();
            }
 
@@ -53,11 +63,14 @@ y = -200;
         }, 1000 / 60);
 
         setInterval(() => {
-            if(this.isAboveGround()) {
+            if (this.isDeath()) {
+                //Death animation
+                this.playAnimation(this.IMAGES_DEAD)
+            } else if(this.isAboveGround()) {
+                //Jumping animation
                 this.playAnimation(this.IMAGES_JUMPING)
-            }else {
-                if (this.world.keyboard.right || this.world.keyboard.left) {
-               
+            }else  {
+               if (this.world.keyboard.right || this.world.keyboard.left) {
                     //Walking animation
                     this.playAnimation(this.IMAGES_WALKING);
                 }
