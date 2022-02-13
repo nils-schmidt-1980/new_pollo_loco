@@ -31,7 +31,7 @@ class DrawableObject {
     }
 
     drawBorder(ctx) {
-        if(this instanceof character || this instanceof chicken) {
+        if(this instanceof character || this instanceof chicken || this instanceof SmallChicken) {
           // Blue rectangle Rahmen
           ctx.beginPath();
           ctx.lineWidth = '5';
@@ -41,4 +41,6 @@ class DrawableObject {
         }
         
     }
+
+    
 }

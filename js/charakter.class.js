@@ -38,6 +38,7 @@ IMAGES_HURT = [
     'img/2.Secuencias_Personaje-Pepe-correcciขn/4.Herido/H-43.png'
 ]
 
+
 world;
 speed = 10;
 walkingAudio = new Audio('audio/walking.mp3');
@@ -73,6 +74,11 @@ y = -200;
             //Death animation
             if (this.isDeath()) {
                 this.playAnimation(this.IMAGES_DEAD)
+                setTimeout(() => {
+                    this.world.checkGameOver = true;
+                }, 2000);
+                
+                
             }
                 //Is Hurt
             else if(this.isHurt()) {

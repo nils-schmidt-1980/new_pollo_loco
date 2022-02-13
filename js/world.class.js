@@ -1,13 +1,14 @@
 class World {
 character = new character();
 level = level1;
-
-//Variablen
 ctx; // wird von der game.js mitgeliefert
 canvas;
 keyboard;
 camera_x = 0;
 statusbar = new StatusBar();
+gameOver = new GameOver();
+checkGameOver = false;
+
     constructor(canvas,keyboard){
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -37,32 +38,42 @@ draw() {
     this.ctx.clearRect(0,0,canvas.width, canvas.height);
     this.ctx.translate(this.camera_x,0);
 
-
-    //Background
+    //If Game Over
+    if(this.checkGameOver == true) {
+        this.gameOver.isGameOver();
+    }else {
+         //Background
     this.addObjectsToMap(this.level.backgroundobject);
 
-     //Statusbar
-     this.ctx.translate(-this.camera_x,0);// back
-     // Space for fixed Objects
-     this.addToMap(this.statusbar);
-     this.ctx.translate(this.camera_x,0);// forward
+    //Statusbar
+    this.ctx.translate(-this.camera_x,0);// back
+    // Space for fixed Objects
+    this.addToMap(this.statusbar);
+    this.ctx.translate(this.camera_x,0);// forward
 
-    //Character
-    this.addToMap(this.character);
+   //Character
+   this.addToMap(this.character);
 
-    //Chicken
-    this.addObjectsToMap(this.level.enemies);
+   //small Schicken
+   this.addObjectsToMap(this.level.enemies);
 
-    //Clouds
-    this.addObjectsToMap(this.level.clouds);
+   //Chicken
+   this.addObjectsToMap(this.level.enemies);
 
-    this.ctx.translate(-this.camera_x,0);
+   //Clouds
+   this.addObjectsToMap(this.level.clouds);
 
-    //Draw Methode wird immer wieder ausgeführt
-    let self = this;
-    requestAnimationFrame(function() {
-        self.draw();
-    });
+   this.ctx.translate(-this.camera_x,0);
+   
+
+   //Draw Methode wird immer wieder ausgeführt
+   let self = this;
+   requestAnimationFrame(function() {
+       self.draw();
+   });
+    }
+
+   
 }
 
 addObjectsToMap(objects) {

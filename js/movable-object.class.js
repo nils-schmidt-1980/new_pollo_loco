@@ -6,7 +6,6 @@ class MovableObject extends DrawableObject {
     acceleration = 2;
     energy = 100;
     lastHit = 0;
-
     sounds;
    
 
@@ -19,7 +18,7 @@ class MovableObject extends DrawableObject {
         }
     }
 
-    isHurt(audio) {
+    isHurt() {
         let timepassed = new Date().getTime() - this.lastHit;
         timepassed = timepassed / 1000; 
         return timepassed < 1;
@@ -28,6 +27,7 @@ class MovableObject extends DrawableObject {
 
     isDeath() {
         return this.energy == 0;
+        
     }
 
     isColliding(mo) {
@@ -71,5 +71,7 @@ class MovableObject extends DrawableObject {
     
     
     
+    
 }
+
 }
