@@ -42,6 +42,7 @@ IMAGES_HURT = [
 world;
 speed = 10;
 walkingAudio = new Audio('audio/walking.mp3');
+overlay = document.getElementById('overlay');
 y = -200;
     constructor() {
         super().loadImage('img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-21.png');
@@ -73,12 +74,8 @@ y = -200;
         setInterval(() => {
             //Death animation
             if (this.isDeath()) {
-                this.playAnimation(this.IMAGES_DEAD)
-                setTimeout(() => {
-                    this.world.checkGameOver = true;
-                }, 2000);
-                
-                
+                this.playAnimation(this.IMAGES_DEAD);
+                this.world.checkGameOver = true;
             }
                 //Is Hurt
             else if(this.isHurt()) {
@@ -105,4 +102,12 @@ y = -200;
 
     this.world.camera_x = -this.x +100;
  }
+
+ isGameOver() {
+    setTimeout(() => {
+        this.overlay.classList.remove ('d-none'); 
+        this.overlay.innerHTML += `<img src='img/9.Intro _ Outro Image/_Game over_ screen/1.you lost.png'>`;   
+        //this.world.canvas.classList.add ('d-none');       
+    }, 1000);   
+}
 }

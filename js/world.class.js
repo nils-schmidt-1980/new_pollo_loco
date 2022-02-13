@@ -6,7 +6,6 @@ canvas;
 keyboard;
 camera_x = 0;
 statusbar = new StatusBar();
-gameOver = new GameOver();
 checkGameOver = false;
 
     constructor(canvas,keyboard){
@@ -40,7 +39,7 @@ draw() {
 
     //If Game Over
     if(this.checkGameOver == true) {
-        this.gameOver.isGameOver();
+        this.character.isGameOver();
     }else {
          //Background
     this.addObjectsToMap(this.level.backgroundobject);
