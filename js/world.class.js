@@ -7,6 +7,7 @@ ctx; // wird von der game.js mitgeliefert
 canvas;
 keyboard;
 camera_x = 0;
+statusbar = new StatusBar();
     constructor(canvas,keyboard){
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -25,6 +26,7 @@ checkColliding() {
         this.level.enemies.forEach(enemy => {
             if(this.character.isColliding(enemy))
             this.character.hit();
+            this.statusbar.setPercentage(this.character.energy);
         });
     }, 200);
 }
@@ -35,8 +37,15 @@ draw() {
     this.ctx.clearRect(0,0,canvas.width, canvas.height);
     this.ctx.translate(this.camera_x,0);
 
+
     //Background
     this.addObjectsToMap(this.level.backgroundobject);
+
+     //Statusbar
+     this.ctx.translate(-this.camera_x,0);// back
+     // Space for fixed Objects
+     this.addToMap(this.statusbar);
+     this.ctx.translate(this.camera_x,0);// forward
 
     //Character
     this.addToMap(this.character);
