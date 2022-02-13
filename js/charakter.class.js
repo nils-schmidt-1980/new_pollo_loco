@@ -32,15 +32,22 @@ IMAGES_DEAD = [
    'img/2.Secuencias_Personaje-Pepe-correcciขn/5.Muerte/D-56.png'
 ];
 
+IMAGES_HURT = [
+    'img/2.Secuencias_Personaje-Pepe-correcciขn/4.Herido/H-41.png',
+    'img/2.Secuencias_Personaje-Pepe-correcciขn/4.Herido/H-42.png',
+    'img/2.Secuencias_Personaje-Pepe-correcciขn/4.Herido/H-43.png'
+]
+
 world;
 speed = 10;
-walkingAudio = new Audio('audio/walking.mp3')
+walkingAudio = new Audio('audio/walking.mp3');
 y = -200;
     constructor() {
         super().loadImage('img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-21.png');
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
-        this.loadImage(this.IMAGES_DEAD);
+        this.loadImages(this.IMAGES_DEAD);
+        this.loadImages(this.IMAGES_HURT);
         this.applyGravity();
         this.animate();
     }
@@ -63,15 +70,22 @@ y = -200;
         }, 1000 / 60);
 
         setInterval(() => {
+            //Death animation
             if (this.isDeath()) {
-                //Death animation
                 this.playAnimation(this.IMAGES_DEAD)
-            } else if(this.isAboveGround()) {
+            }
+                //Is Hurt
+            else if(this.isHurt()) {
+                this.playAnimation(this.IMAGES_HURT)
+            } 
+            
                 //Jumping animation
+            else if(this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING)
-            }else  {
+            }
+                 //Walking animation
+            else  {
                if (this.world.keyboard.right || this.world.keyboard.left) {
-                    //Walking animation
                     this.playAnimation(this.IMAGES_WALKING);
                 }
             }

@@ -11,6 +11,7 @@ class MovableObject {
     speedY = 0;
     acceleration = 2;
     energy = 100;
+    lastHit = 0;
 
     sounds;
     loadImage(path) {
@@ -36,8 +37,16 @@ class MovableObject {
         this.energy -= 5;
         if(this.energy < 0) {
             this.energy = 0;
+        }else {
+            this.lastHit = new Date().getTime();
         }
-        console.log(this.energy);
+    }
+
+    isHurt(audio) {
+        let timepassed = new Date().getTime() - this.lastHit;
+        timepassed = timepassed / 1000; 
+        return timepassed < 1;
+        
     }
 
     isDeath() {
@@ -61,7 +70,7 @@ class MovableObject {
     }
 
     playAnimation(images) {
-                let i = this.currentImage % this.IMAGES_WALKING.length; // Modulu
+                let i = this.currentImage % images.length; // Modulu
                 this.path = images[i];//Hole Pfad aus dem Array
                 this.img = this.ImageCache[this.path];//Schreibt den Pfad in die Image Variable
                 this.currentImage++; // Erhöhe currentImage
