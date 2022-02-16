@@ -30,6 +30,7 @@ class DrawableObject {
         ctx.drawImage(this.img,this.x,this.y,this.width,this.height);
     }
 
+    /*
     drawBorder(ctx) {
         if(this instanceof character || this instanceof chicken || this instanceof SmallChicken) {
           // Blue rectangle Rahmen
@@ -40,7 +41,7 @@ class DrawableObject {
           ctx.stroke();
         }
         
-    }
+    }*/
 
     
 }

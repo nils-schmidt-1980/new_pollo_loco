@@ -21,6 +21,7 @@ class MovableObject extends DrawableObject {
     isHurt() {
         let timepassed = new Date().getTime() - this.lastHit;
         timepassed = timepassed / 1000; 
+        
         return timepassed < 1;
         
     }
@@ -31,6 +32,7 @@ class MovableObject extends DrawableObject {
     }
 
     isColliding(mo) {
+        
         return this.x + this.width > mo.x && this.y + this.height > mo.y && this.x < mo.x && this.y < mo.y + mo.height;
     }
 
@@ -59,7 +61,12 @@ class MovableObject extends DrawableObject {
     }
 
     isAboveGround() { // Check ob Pepe am Boden ist.
-        return this.y < 180
+        if(this instanceof ThrowableObeject) {
+            return true
+        }else {
+            return this.y < 180
+        }
+        
     }
 
    //Links Bewugenung

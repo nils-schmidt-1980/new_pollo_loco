@@ -11,13 +11,14 @@ function init () {
     canvas = document.getElementById('canvas');// Holt Canvas-Tag von der index.html
     world = new World(canvas,keyboard);//Übergabe des Canvas an new World
     soundLoop();
+    
 
     console.log('Dein Objekt lautet:',world.character);
 }
 
 function soundLoop() {
     setInterval(() => {
-       // sound.play();
+       //sound.play();
     }, 1);
 }
 
@@ -45,6 +46,11 @@ document.addEventListener('keydown' ,(event) => {
     if (event.keyCode == 68) {
         keyboard.d = true;
     }
+
+    if (event.keyCode == 70) {
+        this.canvas.requestFullscreen();
+    }
+    console.log(event); 
 });
 
 document.addEventListener('keyup' ,(event) => {

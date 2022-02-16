@@ -1,8 +1,9 @@
 class Keyboard {
-    left = false;
-    right = false;
-    space = false;
+    left = false; //walking left
+    right = false; // walking right//
+    space = false; // jump
     up = false;
     down = false;
-    d = false;
+    d = false; // shoot
+    //f = false; // full screen
 }
