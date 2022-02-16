@@ -8,6 +8,7 @@ camera_x = 0;
 statusbar = new StatusBar();
 checkGameOver = false;
 throwableObject = [];
+startscreen = [new IntroOutro()];
 
     constructor(canvas,keyboard){
         this.ctx = canvas.getContext('2d');
@@ -79,6 +80,9 @@ draw() {
 
    //Throwable Object
    this.addObjectsToMap(this.throwableObject);
+
+    // Start Screen
+    this.addObjectsToMap(this.startscreen); 
 
 
 
