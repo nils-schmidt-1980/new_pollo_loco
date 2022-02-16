@@ -11,6 +11,9 @@ class MovableObject extends DrawableObject {
 
     hit() {
         this.energy -= 5;
+        let audioHit = new Audio('audio/outch.mp3');
+        audioHit.play();
+        new Audio('')
         if(this.energy < 0) {
             this.energy = 0;
         }else {
@@ -33,6 +36,7 @@ class MovableObject extends DrawableObject {
 
     isColliding(mo) {
         
+       
         return this.x + this.width > mo.x && this.y + this.height > mo.y && this.x < mo.x && this.y < mo.y + mo.height;
     }
 

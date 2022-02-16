@@ -2,7 +2,7 @@
 let canvas;
 let worlds;
 let keyboard;
-//let sound = new Audio('audio/game_sound.mp3');
+let gameSound = new Audio('audio/chickenplay.mp3');
 
 
 function init () {
@@ -18,7 +18,7 @@ function init () {
 
 function soundLoop() {
     setInterval(() => {
-       //sound.play();
+       gameSound.play();
     }, 1);
 }
 
