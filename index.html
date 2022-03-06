@@ -5,8 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@300&family=M+PLUS+1+Code:wght@100;200;300;400;500&family=Rubik:ital,wght@0,300;1,300;1,400&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Zilla+Slab+Highlight&display=swap" rel="stylesheet">
+    <script src="./js/game.js"></script>
     <script src="./js/drawable-Object.class.js"></script>
     <script src="./js/status-bar.class.js"></script>
+    <script src="./js/icons.class.js"></script>
     <script src="./js/movable-object.class.js"></script>
     <script src="./js/world.class.js"></script>
     <script src="js/levels/intro-outro.class.js"></script>
@@ -15,22 +20,67 @@
     <script src="./js/chicken.class.js"></script>
     <script src="./js/endboss.class.js"></script>
     <script src="./js/clouds.class.js"></script>
-    <script src="./js/game.js"></script>
     <script src="./js/background-object.class.js"></script>
     <script src="./js/keyboard.class.js"></script>
     <script src="./js/level.class.js"></script>
     <script src="./js/levels/level1.js"></script>
     <script src="./js/throwable-object.class.js"></script>
-    <script src="./js/game-over.class.js"></script>
+    
     
     
     <title>El Pollo Loco</title>
 </head>
 <body onload="init()">
+    <div class="game-box">
+        <div id="start-game">
+            <h1 class="text-center game-headline">El Pollo Loco</h1>
+            <img src="img/9.Intro _ Outro Image/Start Screen/Opciขn 1.png" alt="">
+        </div>
 
-    <canvas id="canvas" width="720px" height="480px"></canvas>
-    <div id="overlay" class="d-none">
+        <canvas id="canvas" class="d-none" width="720px" height="480px"></canvas>
+        <div id="fulscreen-icon" class="d-none">
+            <img onclick="fullScreen()" title="Vollbild anzeigen" src="img/fullscreen-10-64.png" alt="">
+        </div>
+        <div id="overlay" class="d-none">
+            <div class="info-close-bar"><span onclick="infoClose()">X</span></div>
+            <h1 class="text-center game-headline">El Pollo Loco</h1>
+            <table class="info-table">
+                <tr>
+                    <th>
+                        Taste
+                    </th>
+                    <th>
+                        Aktion
+                    </th>
+                </tr>
+                <tr>
+                    <td><img class="table-icon" src="./img/icons/myspace-64.png" alt=""></td>
+                    <td>Leertaste</td>
+                </tr>
+                <tr>
+                    <td><img class="table-icon" src="img/icons/arrow_left.png" alt=""></td>
+                    <td>Links laufen</td>
+                </tr>
+                <tr>
+                    <td><img class="table-icon" src="img/icons/arrow_right.png" alt=""></td>
+                    <td>Rechts laufen</td>
+                </tr>
+                <tr>
+                    <td><img class="table-icon" src="./img/icons/letter-d-64.png" alt=""></td>
+                    <td>Flasche werfen</td>
+                </tr>
 
+                <tr>
+                    <td><img class="table-icon" src="./img/icons/letter-i-64.png" alt=""></td>
+                    <td>Hilfe</td>
+                </tr>
+            </table>
+        </div>
+        <div id="menu">
+            <a href="#" onclick="gameStart()">Spiel starten</a>
+            <a href="#" onclick="infoClose()">Hilfe</a>
+        </div>
     </div>
+    
 </body>
 </html>

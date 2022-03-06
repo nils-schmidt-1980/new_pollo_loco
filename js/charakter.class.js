@@ -1,5 +1,7 @@
 class character extends MovableObject {
 height = 250;
+
+
 IMAGES_WALKING = [
     'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-21.png',
     'img/2.Secuencias_Personaje-Pepe-correcciขn/2.Secuencia_caminata/W-22.png',
@@ -103,11 +105,5 @@ y = -200;
     this.world.camera_x = -this.x +100;
  }
 
- isGameOver() {
-    setTimeout(() => {
-        this.overlay.classList.remove ('d-none'); 
-        this.overlay.innerHTML += `<img src='img/9.Intro _ Outro Image/_Game over_ screen/1.you lost.png'>`;   
-        //this.world.canvas.classList.add ('d-none');       
-    }, 1000);   
-}
+
 }

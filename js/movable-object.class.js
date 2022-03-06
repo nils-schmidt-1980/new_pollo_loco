@@ -12,7 +12,7 @@ class MovableObject extends DrawableObject {
     hit() {
         this.energy -= 5;
         let audioHit = new Audio('audio/outch.mp3');
-        audioHit.play();
+        //audioHit.play();
         new Audio('')
         if(this.energy < 0) {
             this.energy = 0;
