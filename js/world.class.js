@@ -1,5 +1,6 @@
 class World {
     character = new character();
+    coin = new Coins();
     level = level1;
     ctx; // wird von der game.js mitgeliefert
     canvas;
@@ -92,6 +93,9 @@ class World {
     
        //Throwable Object
        this.addObjectsToMap(this.throwableObject);
+
+       //Coins
+       this.addObjectsToMap(this.level.coin)
 
         
 

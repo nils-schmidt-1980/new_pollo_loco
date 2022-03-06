@@ -48,5 +48,20 @@ const level1 = new Level([
     [   
         //Game Over
         new BackgroundObject('img/9.Intro _ Outro Image/_Game over_ screen/1.you lost.png',0)
+    ],
+
+    [
+        //Coins
+        new Coins('img/8.Coin/Moneda1.png',100,100),
+        new Coins('img/8.Coin/Moneda1.png',150,100),
+        new Coins('img/8.Coin/Moneda1.png',200,100),
+
+        new Coins('img/8.Coin/Moneda1.png',700*2,300),
+        new Coins('img/8.Coin/Moneda1.png',750*2,300),
+        new Coins('img/8.Coin/Moneda1.png',800*2,300),
+
+        new Coins('img/8.Coin/Moneda1.png',700*3,120),
+        new Coins('img/8.Coin/Moneda1.png',750*3,120),
+        new Coins('img/8.Coin/Moneda1.png',800*3,120),
     ]
 );
