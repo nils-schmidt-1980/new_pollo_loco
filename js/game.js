@@ -1,12 +1,12 @@
-
+let startGamingSound = new Audio('audio/start_gaming.mp3');
 let canvas;
 let worlds;
 let keyboard;
 let gameSound = new Audio('audio/chickenplay.mp3');
-let startGamingSound = new Audio('audio/start_gaming.mp3');
-startGamingSound.play();
+
+
 function init () {
-   
+  startGamingSound.play();
 }
 
 function gameStart() {
@@ -14,7 +14,7 @@ function gameStart() {
     canvas = document.getElementById('canvas');// Holt Canvas-Tag von der index.html
     world = new World(canvas,keyboard);//Übergabe des Canvas an new World
     console.log('Dein Objekt lautet:',world.character);
-    gameSound.play();
+    
 
     document.getElementById('fulscreen-icon').classList.remove ('d-none')
     document.getElementById('canvas').classList.remove ('d-none');

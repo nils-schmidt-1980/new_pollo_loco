@@ -7,6 +7,7 @@ class World {
     keyboard;
     camera_x = 0;
     statusbar = new StatusBar();
+    coinsbar = new Coinsbar();
     checkGameOver = false;
     throwableObject = [];
     soundGameOver = new Audio('audio/game_over.mp3')
@@ -77,9 +78,14 @@ class World {
 
        
     
-        //Statusbar
+        //Live Statusbar
         this.ctx.translate(-this.camera_x,0);// back
         this.addToMap(this.statusbar);
+        this.ctx.translate(this.camera_x,0);// forward
+
+        //Coins Statusbar
+        this.ctx.translate(-this.camera_x,0);// back
+        this.addToMap(this.coinsbar);
         this.ctx.translate(this.camera_x,0);// forward
     
        //Character
